@@ -1,0 +1,110 @@
+---- Minecraft Crash Report ----
+// Shall we play a game?
+
+Time: 15.03.2025, 23:55
+Description: Rendering entity in world
+
+java.lang.NoClassDefFoundError: net/minecraftforge/client/model/data/EmptyModelData
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:121)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.renderBlockState(MinecartRenderer.java:119)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.render(MinecartRenderer.java:98)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.render(MinecartRenderer.java:18)
+	at net.minecraft.client.renderer.entity.EntityRendererManager.renderEntityStatic(EntityRendererManager.java:296)
+	at net.minecraft.client.renderer.WorldRenderer.renderEntity(WorldRenderer.java:2024)
+	at net.minecraft.client.renderer.WorldRenderer.updateCameraAndRender(WorldRenderer.java:1626)
+	at net.minecraft.client.renderer.GameRenderer.renderWorld(GameRenderer.java:979)
+	at net.minecraft.client.renderer.GameRenderer.updateCameraAndRender(GameRenderer.java:647)
+	at net.minecraft.client.Minecraft.runGameLoop(Minecraft.java:1162)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:675)
+	at net.minecraft.client.main.Main.main(Main.java:214)
+	at Start.main(Start.java:10)
+Caused by: java.lang.ClassNotFoundException: net.minecraftforge.client.model.data.EmptyModelData
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 13 more
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at net.minecraft.client.renderer.BlockRendererDispatcher.renderBlock(BlockRendererDispatcher.java:121)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.renderBlockState(MinecartRenderer.java:119)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.render(MinecartRenderer.java:98)
+	at net.minecraft.client.renderer.entity.MinecartRenderer.render(MinecartRenderer.java:18)
+
+-- Entity being rendered --
+Details:
+	Entity Type: minecraft:chest_minecart (net.minecraft.entity.item.minecart.ChestMinecartEntity)
+	Entity ID: 1492
+	Entity Name: Minecart with Chest
+	Entity's Exact location: 544.50, 30.06, -243.50
+	Entity's Block location: World: (544,30,-244), Chunk: (at 0,1,12 in 34,-16; contains blocks 544,0,-256 to 559,255,-241), Region: (1,-1; contains chunks 32,-32 to 63,-1, blocks 512,0,-512 to 1023,255,-1)
+	Entity's Momentum: 0.00, 0.00, 0.00
+	Entity's Passengers: []
+	Entity's Vehicle: ~~ERROR~~ NullPointerException: Cannot invoke "net.minecraft.entity.Entity.toString()" because the return value of "net.minecraft.entity.Entity.getRidingEntity()" is null
+
+-- Renderer details --
+Details:
+	Assigned renderer: net.minecraft.client.renderer.entity.MinecartRenderer@4964d305
+	Location: 54.98,-44.60,3.50 - World: (54,-45,3), Chunk: (at 6,-3,3 in 3,0; contains blocks 48,0,0 to 63,255,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,0,0 to 511,255,511)
+	Rotation: 0.0
+	Delta: 0.32011336
+Stacktrace:
+	at net.minecraft.client.renderer.entity.EntityRendererManager.renderEntityStatic(EntityRendererManager.java:296)
+	at net.minecraft.client.renderer.WorldRenderer.renderEntity(WorldRenderer.java:2024)
+	at net.minecraft.client.renderer.WorldRenderer.updateCameraAndRender(WorldRenderer.java:1626)
+	at net.minecraft.client.renderer.GameRenderer.renderWorld(GameRenderer.java:979)
+
+-- Affected level --
+Details:
+	All players: 1 total; [ClientPlayerEntity['Player636'/240, l='ClientLevel', x=490.22, y=73.05, z=-246.97]]
+	Chunk stats: Client Chunk Cache: 625, 371
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (64,66,-112), Chunk: (at 0,4,0 in 4,-7; contains blocks 64,0,-112 to 79,255,-97), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,0,-512 to 511,255,-1)
+	Level time: 8310 game time, 8310 day time
+	Server brand: vanilla
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.world.ClientWorld.fillCrashReport(ClientWorld.java:617)
+	at net.minecraft.client.Minecraft.addGraphicsAndWorldToCrashReport(Minecraft.java:2671)
+	at net.minecraft.client.Minecraft.run(Minecraft.java:696)
+	at net.minecraft.client.main.Main.main(Main.java:214)
+	at Start.main(Start.java:10)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.14, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 883636984 bytes (842 MB) / 1514143744 bytes (1444 MB) up to 4271898624 bytes (4074 MB)
+	CPUs: 20
+	JVM Flags: 0 total; 
+	Launched Version: mcp
+	Backend library: LWJGL version 3.2.1 build 12
+	Backend API: NVIDIA GeForce RTX 3060/PCIe/SSE2 GL version 4.6.0 NVIDIA 560.94, NVIDIA Corporation
+	GL Caps: Using framebuffer using OpenGL 3.0
+	Using VBOs: Yes
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	Graphics mode: fabulous
+	Resource Packs: vanilla
+	Current Language: English (US)
+	CPU: 20x Intel(R) Xeon(R) CPU E5-2666 v3 @ 2.90GHz
+	OptiFine Version: OptiFine_1.16.5_HD_U_G8
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 10
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 NVIDIA 560.94
+	OpenGlRenderer: NVIDIA GeForce RTX 3060/PCIe/SSE2
+	OpenGlVendor: NVIDIA Corporation
+	CpuCount: 20
