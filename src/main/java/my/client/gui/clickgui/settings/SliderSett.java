@@ -19,7 +19,6 @@ public class SliderSett extends Setting {
     }
 
     public void setValue(float value) {
-        // Округляем до ближайшего инкремента
         float steps = Math.round((value - min) / increment);
         this.value = Math.max(min, Math.min(max, min + (steps * increment)));
     }

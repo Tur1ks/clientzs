@@ -1,5 +1,7 @@
 package my.client.command;
 
+import my.client.command.commands.HelpCommand;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,10 +15,7 @@ public class CommandRegistry {
     }
 
     public static void init() {
-        // Register all commands here
-        register(new my.client.command.commands.HelpCommand());
-        // Add more commands as you create them
-        // register(new ExampleCommand());
+        register(new HelpCommand());
     }
 
     public static List<Command> getCommands() {

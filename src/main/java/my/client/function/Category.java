@@ -1,4 +1,3 @@
-// Категории для модулей
 package my.client.function;
 
 public enum Category {

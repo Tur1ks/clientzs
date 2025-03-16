@@ -18,7 +18,6 @@ import java.awt.Color;
 public class RenderUtil {
     private static final Minecraft mc = Minecraft.getInstance();
 
-    // Рисует прямоугольник
     public static void drawRect(MatrixStack matrixStack, float left, float top, float right, float bottom, int color) {
         if (left < right) {
             float i = left;
@@ -55,7 +54,6 @@ public class RenderUtil {
         RenderSystem.disableBlend();
     }
 
-    // Рисует прямоугольник с закругленными углами
     public static void drawRoundedRect(MatrixStack matrixStack, float x, float y, float width, float height, float radius, int color) {
         drawRect(matrixStack, x + radius, y, x + width - radius, y + height, color);
         drawRect(matrixStack, x, y + radius, x + width, y + height - radius, color);
@@ -66,7 +64,6 @@ public class RenderUtil {
         drawFilledCircle(matrixStack, x + width - radius, y + height - radius, radius, color);
     }
 
-    // Рисует заполненный круг
     public static void drawFilledCircle(MatrixStack matrixStack, float x, float y, float radius, int color) {
         matrixStack.push();
         RenderSystem.enableBlend();
@@ -98,7 +95,6 @@ public class RenderUtil {
         matrixStack.pop();
     }
 
-    // Рисует контур круга
     public static void drawCircle(MatrixStack matrixStack, float x, float y, float radius, int color) {
         matrixStack.push();
         RenderSystem.enableBlend();
@@ -132,7 +128,6 @@ public class RenderUtil {
         matrixStack.pop();
     }
 
-    // Рисует градиентный прямоугольник
     public static void drawGradientRect(MatrixStack matrixStack, float left, float top, float right, float bottom, int startColor, int endColor) {
         Matrix4f matrix = matrixStack.getLast().getMatrix();
         float alpha1 = (float) (startColor >> 24 & 255) / 255.0F;
@@ -164,7 +159,6 @@ public class RenderUtil {
         RenderSystem.enableTexture();
     }
 
-    // Рисует линию
     public static void drawLine(MatrixStack matrixStack, float x1, float y1, float x2, float y2, float thickness, int color) {
         Matrix4f matrix = matrixStack.getLast().getMatrix();
         float alpha = (float) (color >> 24 & 255) / 255.0F;
@@ -190,7 +184,6 @@ public class RenderUtil {
         RenderSystem.disableBlend();
     }
 
-    // Рисует текстуру
     public static void drawTexture(MatrixStack matrixStack, ResourceLocation texture, float x, float y, float width, float height) {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
@@ -208,7 +201,6 @@ public class RenderUtil {
         RenderSystem.disableBlend();
     }
 
-    // Рисует текстуру с заданным цветом
     public static void drawColoredTexture(MatrixStack matrixStack, ResourceLocation texture, float x, float y, float width, float height, int color) {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
@@ -231,49 +223,40 @@ public class RenderUtil {
         RenderSystem.disableBlend();
     }
 
-    // Рисует тень под прямоугольником (для эффекта "подъема")
     public static void drawShadow(MatrixStack matrixStack, float x, float y, float width, float height, float shadowSize) {
-        // Верхняя и левая тень (темнее)
         drawGradientRect(matrixStack, x - shadowSize, y - shadowSize, x, y + height,
                 new Color(0, 0, 0, 100).getRGB(), new Color(0, 0, 0, 0).getRGB());
         drawGradientRect(matrixStack, x, y - shadowSize, x + width, y,
                 new Color(0, 0, 0, 100).getRGB(), new Color(0, 0, 0, 0).getRGB());
 
-        // Нижняя и правая тень (светлее)
         drawGradientRect(matrixStack, x + width, y, x + width + shadowSize, y + height,
                 new Color(0, 0, 0, 0).getRGB(), new Color(0, 0, 0, 50).getRGB());
         drawGradientRect(matrixStack, x, y + height, x + width, y + height + shadowSize,
                 new Color(0, 0, 0, 0).getRGB(), new Color(0, 0, 0, 50).getRGB());
 
-        // Угловые тени
         drawGradientRect(matrixStack, x + width, y - shadowSize, x + width + shadowSize, y,
                 new Color(0, 0, 0, 50).getRGB(), new Color(0, 0, 0, 0).getRGB());
         drawGradientRect(matrixStack, x - shadowSize, y + height, x, y + height + shadowSize,
                 new Color(0, 0, 0, 50).getRGB(), new Color(0, 0, 0, 0).getRGB());
     }
 
-    // Рисует текст с тенью
     public static void drawTextWithShadow(MatrixStack matrixStack, String text, float x, float y, int color) {
         mc.fontRenderer.drawStringWithShadow(matrixStack, text, x, y, color);
     }
 
-    // Рисует текст по центру
     public static void drawCenteredText(MatrixStack matrixStack, String text, float x, float y, int color) {
         mc.fontRenderer.drawStringWithShadow(matrixStack, text, x - mc.fontRenderer.getStringWidth(text) / 2, y, color);
     }
 
-    // Рисует модульную анимацию (для переходов)
     public static void scissor(float x, float y, float width, float height) {
         final float scale = (float) mc.getMainWindow().getGuiScaleFactor();
         GL11.glScissor((int) (x * scale), (int) ((mc.getMainWindow().getFramebufferHeight() - (y + height)) * scale), (int) (width * scale), (int) (height * scale));
     }
 
-    // Включает обрезку изображения
     public static void enableScissor() {
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
     }
 
-    // Отключает обрезку изображения
     public static void disableScissor() {
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
     }

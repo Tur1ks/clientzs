@@ -15,7 +15,6 @@ public class HelpCommand extends Command {
     @Override
     public void execute(String[] args) {
         if (args.length == 0) {
-            // No args, list all commands
             sendMessage(TextFormatting.GRAY + "Available commands:");
 
             for (Command command : CommandRegistry.getCommands()) {
@@ -25,7 +24,6 @@ public class HelpCommand extends Command {
 
             sendMessage(TextFormatting.GRAY + "Use .help [command] for more information about a specific command.");
         } else {
-            // Looking for specific command help
             String commandName = args[0].toLowerCase();
 
             for (Command command : CommandRegistry.getCommands()) {
