@@ -60,11 +60,15 @@ public class ClickGui extends Screen {
     public ClickGui() {
         super(new StringTextComponent("ClickGui"));
 
-        // Создание панелей для каждой категории
-        int startX = 20;
+        int startX = 50;  // Fixed starting position from left
+        int startY = 20;  // Fixed top position
+        int spacing = 10;
+
         for (Category category : Category.values()) {
-            panels.add(new CategoryPanel(category, startX, 20));
-            startX += panelWidth + 10;
+            CategoryPanel panel = new CategoryPanel(category, startX, startY);
+            panel.extended = true;
+            panels.add(panel);
+            startX += panelWidth + spacing;
         }
     }
 
@@ -193,10 +197,6 @@ public class ClickGui extends Screen {
             // Рисуем название категории
             RenderUtil.drawTextWithShadow(matrixStack, category.getName(), x + 5, y + panelHeight / 2 - mc.fontRenderer.FONT_HEIGHT / 2, textColor);
 
-            // Индикатор раскрытия
-            String expandIcon = extended ? "-" : "+";
-            RenderUtil.drawTextWithShadow(matrixStack, expandIcon, x + panelWidth - 10, y + panelHeight / 2 - mc.fontRenderer.FONT_HEIGHT / 2, textColor);
-
             // Рисуем модули, если панель раскрыта
             if (openAnimation > 0) {
                 int totalHeight = (int)(getTotalExpandedHeight() * openAnimation);
@@ -227,25 +227,15 @@ public class ClickGui extends Screen {
         }
 
         public boolean mouseClicked(int mouseX, int mouseY, int mouseButton) {
-            // Проверка клика по заголовку
+            // Remove header click handling for extending/collapsing
             if (mouseX >= x && mouseX <= x + panelWidth && mouseY >= y && mouseY <= y + panelHeight) {
-                if (mouseButton == 0) { // ЛКМ - раскрытие/скрытие панели
-                    extended = !extended;
-                    return true;
-                } else if (mouseButton == 1) { // ПКМ - перетаскивание
-                    draggingPanel = this;
-                    dragX = mouseX - x;
-                    dragY = mouseY - y;
-                    return true;
-                }
+
             }
 
-            // Проверка клика по модулям
-            if (extended && openAnimation > 0.9f) { // Позволяем клик только когда анимация почти завершена
-                for (ModuleButton button : moduleButtons) {
-                    if (button.mouseClicked(mouseX, mouseY, mouseButton)) {
-                        return true;
-                    }
+            // Check clicks on modules
+            for (ModuleButton button : moduleButtons) {
+                if (button.mouseClicked(mouseX, mouseY, mouseButton)) {
+                    return true;
                 }
             }
 

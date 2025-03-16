@@ -4,7 +4,6 @@ package my.client.function;
 public enum Category {
     COMBAT("Combat"),
     MOVEMENT("Movement"),
-    RENDER("Render"),
     PLAYER("Player"),
     CLIENT("Client"),
     MISC("Misc");
