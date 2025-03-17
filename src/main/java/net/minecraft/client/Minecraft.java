@@ -43,7 +43,7 @@ import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-import my.client.Client;
+import ravage.client.Ravage;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -546,11 +546,11 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
 
 
 
-        this.client = new Client();
+        this.client = new Ravage();
         this.client.onStart();
     }
-    private Client client;
 
+    private Ravage client;
 
     public void setDefaultMinecraftTitle()
     {

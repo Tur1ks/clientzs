@@ -338,7 +338,7 @@ public class KeyboardListener
     public void onKeyEvent(long windowPointer, int key, int scanCode, int action, int modifiers)
     {
         if (action == 1) { // Key press
-            my.client.Client.getInstance().onKeyPressed(key, scanCode, modifiers);
+            ravage.client.Ravage.getInstance().onKeyPressed(key, scanCode, modifiers);
         }
         if (windowPointer == this.mc.getMainWindow().getHandle())
         {

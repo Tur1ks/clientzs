@@ -17,8 +17,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-import my.client.event.EventManager;
-import my.client.event.EventRender;
+import ravage.client.event.EventManager;
+import ravage.client.event.EventRender;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.GameSettings;
 import net.minecraft.client.MainWindow;
