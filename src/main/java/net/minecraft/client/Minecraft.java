@@ -2410,7 +2410,7 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
 
     public boolean isMultiplayerEnabled()
     {
-        return this.enableMultiplayer && this.field_244734_au.serversAllowed();
+        return true;
     }
 
     public boolean cannotSendChatMessages(UUID playerUUID)
@@ -2427,7 +2427,7 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
 
     public boolean isChatEnabled()
     {
-        return this.enableChat && this.field_244734_au.chatAllowed();
+        return true;
     }
 
     /**
@@ -2435,7 +2435,7 @@ public class Minecraft extends RecursiveEventLoop<Runnable> implements ISnooperI
      */
     public final boolean isDemo()
     {
-        return this.isDemo;
+        return false;
     }
 
     @Nullable
