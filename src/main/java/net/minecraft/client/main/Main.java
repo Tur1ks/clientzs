@@ -7,6 +7,8 @@ import com.mojang.authlib.properties.PropertyMap.Serializer;
 import com.mojang.blaze3d.Empty3i;
 import com.mojang.blaze3d.systems.RenderSystem;
 import java.io.File;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
 import java.net.PasswordAuthentication;
