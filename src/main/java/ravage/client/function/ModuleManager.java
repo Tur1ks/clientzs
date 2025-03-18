@@ -93,6 +93,7 @@ public class ModuleManager {
         if (modulesByKey.containsKey(keyCode)) {
             for (Module module : modulesByKey.get(keyCode)) {
                 module.toggle();
+                System.out.println("ENABLED: " + module);
                 handled = true;
             }
         }
@@ -151,4 +152,5 @@ public class ModuleManager {
     public static ModuleManager getInstance() {
         return instance;
     }
+
 }

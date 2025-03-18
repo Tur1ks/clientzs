@@ -6,6 +6,7 @@ import ravage.client.event.EventManager;
 import ravage.client.gui.clickgui.ClickGui;
 import net.minecraft.client.Minecraft;
 import org.lwjgl.glfw.GLFW;
+import ravage.client.util.font.Fonts;
 
 public class Ravage {
     private static Ravage instance;
@@ -16,11 +17,13 @@ public class Ravage {
 
     public Ravage() {
         instance = this;
+        /////////////////////////////////////////////////////////////////
+        Fonts.init();
+        /////////////////////////////////////////////////////////////////
 
         this.eventManager = new EventManager();
         this.funcRegister = new FuncRegister();
         this.moduleManager = this.funcRegister.getModuleManager();
-
         this.clickGui = new ClickGui();
     }
 
@@ -44,9 +47,9 @@ public class Ravage {
             Minecraft.getInstance().displayGuiScreen(clickGui);
         }
 
-        //if (moduleManager != null) {
-        //    moduleManager.onKeyPressed(keyCode, scanCode, modifiers);
-        //}
+        if (moduleManager != null) {
+            moduleManager.onKeyPress(keyCode);
+        }
     }
 
     public void onShutdown() {

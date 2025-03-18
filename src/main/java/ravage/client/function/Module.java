@@ -9,7 +9,7 @@ public class Module {
     private final String description;
     private int key;
     private final Category category;
-    private boolean enabled;
+    public boolean enabled;
     private final List<Setting> settings = new ArrayList<>();
 
     private boolean registered = false;

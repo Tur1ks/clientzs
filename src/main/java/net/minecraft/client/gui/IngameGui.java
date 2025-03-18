@@ -176,19 +176,8 @@ public class IngameGui extends AbstractGui
         Minecraft mc = Minecraft.getInstance();
         MainWindow mainWindow = mc.getMainWindow();
         IRenderTypeBuffer.Impl bufferSource = mc.getRenderTypeBuffers().getBufferSource();
-
-        // Создаем экземпляр вашего события
-        EventRender eventRender = new EventRender(
-                partialTicks,
-                matrixStack,
-                bufferSource,
-                mainWindow
-        );
-
-        // Отправляем событие в вашу систему событий
+        EventRender eventRender = new EventRender(partialTicks, matrixStack, bufferSource, mainWindow);
         EventManager.getInstance().call(eventRender);
-
-
         this.scaledWidth = this.mc.getMainWindow().getScaledWidth();
         this.scaledHeight = this.mc.getMainWindow().getScaledHeight();
         FontRenderer fontrenderer = this.getFontRenderer();

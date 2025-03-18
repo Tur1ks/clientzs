@@ -1,0 +1,68 @@
+---- Minecraft Crash Report ----
+// I let you down. Sorry :(
+
+Time: 18.03.2025, 17:48
+Description: Initializing game
+
+java.lang.NullPointerException: Cannot invoke "ravage.client.util.font.styled.StyledFont.drawString(com.mojang.blaze3d.matrix.MatrixStack, String, double, double, int)" because "ravage.client.util.font.Fonts.gilroyBold[17]" is null
+	at ravage.client.function.impl.misc.Test.onEnable(Test.java:34)
+	at ravage.client.function.Module.toggle(Module.java:28)
+	at ravage.client.function.FuncRegister.registerMiscModules(FuncRegister.java:50)
+	at ravage.client.function.FuncRegister.registerModules(FuncRegister.java:21)
+	at ravage.client.function.FuncRegister.<init>(FuncRegister.java:12)
+	at ravage.client.Ravage.<init>(Ravage.java:21)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:549)
+	at net.minecraft.client.main.Main.main(Main.java:167)
+	at Start.main(Start.java:10)
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Stacktrace:
+	at ravage.client.function.impl.misc.Test.onEnable(Test.java:34)
+	at ravage.client.function.Module.toggle(Module.java:28)
+	at ravage.client.function.FuncRegister.registerMiscModules(FuncRegister.java:50)
+	at ravage.client.function.FuncRegister.registerModules(FuncRegister.java:21)
+	at ravage.client.function.FuncRegister.<init>(FuncRegister.java:12)
+	at ravage.client.Ravage.<init>(Ravage.java:21)
+	at net.minecraft.client.Minecraft.<init>(Minecraft.java:549)
+
+-- Initialization --
+Details:
+Stacktrace:
+	at net.minecraft.client.main.Main.main(Main.java:167)
+	at Start.main(Start.java:10)
+
+-- System Details --
+Details:
+	Minecraft Version: 1.16.5
+	Minecraft Version ID: 1.16.5
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.12, Amazon.com Inc.
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Amazon.com Inc.
+	Memory: 1354584320 bytes (1291 MB) / 1541406720 bytes (1470 MB) up to 4257218560 bytes (4060 MB)
+	CPUs: 12
+	JVM Flags: 0 total; 
+	Launched Version: mcp
+	Backend library: LWJGL version 3.2.1 build 12
+	Backend API: Intel(R) UHD Graphics 630 GL version 4.6.0 - Build 31.0.101.2115, Intel
+	GL Caps: Using framebuffer using OpenGL 3.0
+	Using VBOs: Yes
+	Is Modded: Very likely; Jar signature invalidated
+	Type: Client (map_client.txt)
+	CPU: 12x Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+	OptiFine Version: OptiFine_1.16.5_HD_U_G8
+	OptiFine Build: ~~NULL~~
+	Render Distance Chunks: 2
+	Mipmaps: 4
+	Anisotropic Filtering: 1
+	Antialiasing: 0
+	Multitexture: false
+	Shaders: null
+	OpenGlVersion: 4.6.0 - Build 31.0.101.2115
+	OpenGlRenderer: Intel(R) UHD Graphics 630
+	OpenGlVendor: Intel
+	CpuCount: 12
